@@ -14,7 +14,7 @@ const camera: Camera = {
   position: {
     x: 0,
     y: 0,
-    z: 10,
+    z: 0,
     w: 1,
   },
   focus: {
@@ -34,6 +34,8 @@ const ctrl = {
   translate: [0, 0.1, -5] as Vector3,
   rotate: [0, 0, 0] as Vector3,
   scale: [1, 1, 1] as Vector3,
+  wireframe: true,
+  color: '#FFFFFF',
 };
 
 const gui = new dat.GUI();
@@ -50,7 +52,8 @@ gui.add({ shape: 'pyramid' }, 'shape', ['pyramid', 'cube', 'dodecahedron']).onCh
       break;
   }
 });
-
+gui.add(ctrl, 'wireframe');
+gui.addColor(ctrl, 'color');
 const C = gui.addFolder('camera');
 C.add(camera, 'FOVAngle', 1, 120, 1);
 C.add(camera, 'near', 0.5, 30, 0.01);
@@ -75,13 +78,14 @@ S.add(ctrl.scale, '2', 0, 3, 0.1).name('Z');
 // ------ canvas update/callback --------
 
 const updateCanvas = () => {
-  const { translate, rotate, scale, objectToDraw } = ctrl;
+  const { translate, rotate, scale, objectToDraw, color, wireframe } = ctrl;
   const myObject: Object3D = {
     faces: [],
     ...objectToDraw,
     translate,
     scale,
     rotate,
+    color: wireframe ? undefined : color,
   };
 
   draw({

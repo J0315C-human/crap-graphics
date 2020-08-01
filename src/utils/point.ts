@@ -38,3 +38,22 @@ export const interpolatePointList = (points: Point[]): Point[] => {
   if (points.length === result.length) return result;
   else return interpolatePointList(result);
 };
+
+export const getAveragePoint = (points: Point[]): Point => {
+  const totals = points.reduce(
+    (prev, cur) => ({
+      x: prev.x + cur.x,
+      y: prev.y + cur.y,
+      z: prev.z + cur.z,
+      w: prev.w + cur.w,
+    }),
+    { x: 0, y: 0, z: 0, w: 0 },
+  );
+  if (!points.length) return totals;
+  return {
+    x: totals.x / points.length,
+    y: totals.y / points.length,
+    z: totals.z / points.length,
+    w: totals.w / points.length,
+  };
+};

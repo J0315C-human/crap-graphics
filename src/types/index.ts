@@ -23,6 +23,7 @@ export interface Object3D {
   translate?: Vector3;
   rotate?: Vector3;
   scale?: Vector3;
+  color?: string;
   faces: Face[];
 }
 

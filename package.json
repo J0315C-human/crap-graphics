@@ -12,6 +12,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/color": "^3.0.1",
     "@types/dat.gui": "^0.7.5",
     "@types/history": "4.7.0",
     "@types/node": "10.5.7",
@@ -48,6 +49,7 @@
     "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
+    "color": "^3.1.2",
     "dat.gui": "^0.7.7"
   }
 }
