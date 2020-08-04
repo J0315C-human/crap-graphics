@@ -13,7 +13,7 @@ export const vectorAsPoint = (v: Vector3 | Vector4): Point => ({
   w: v[3] === undefined ? 1 : v[3],
 });
 
-export const getHalfwayPoint = (a: Point, b: Point): Point => ({
+const getHalfwayPoint = (a: Point, b: Point): Point => ({
   x: (a.x + b.x) / 2,
   y: (a.y + b.y) / 2,
   z: (a.z + b.z) / 2,
